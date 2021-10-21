@@ -4,6 +4,7 @@ from flask_migrate import Migrate, MigrateCommand
 from flask_script import Manager
 from flask_uploads import UploadSet, configure_uploads, IMAGES
 from flask_wtf import FlaskForm
+from flask import request, redirect
 from wtforms import StringField, IntegerField, TextAreaField, HiddenField, SelectField
 from flask_wtf.file import FileField, FileAllowed
 from flask import Blueprint, render_template, request, flash, jsonify
@@ -132,17 +133,15 @@ def handle_cart():
 @app.route('/', methods=['GET', 'POST'])
 def index():
     products = Product.query.all()
-    form = Search()
-    if form.validate_on_submit():
-        prod=Product()
+    if request.method == "POST":
+        item = request.form.get("item")
         l=[]
-        form.populate_obj(prod)
         for p in products:
-            if p.name == prod.name:
+            if p.name == item:
                 l.append(p)
-        return render_template('index.html', products=l, user=current_user,form=form)
+        return render_template('index.html', products=l, user=current_user)
     else:
-        return render_template('index.html', products=products, user=current_user,form=form)
+        return render_template('index.html', products=products, user=current_user)
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -211,7 +210,7 @@ def sign_up():
 
 @app.route('/user_orders')
 def user_orders():
-    orders = Order.query.filter_by(user_id = int(current_user.id)).all()
+    orders = Order.query.filter_by(user_id = int(current_user.id))
     return render_template('user_orders.html', orders=orders, user=current_user)
 
 @app.route('/view_user_order/<order_id>')
@@ -338,6 +337,20 @@ def delete_product():
         db.session.commit()
 
     return jsonify({})
+
+@app.route('/update-order', methods=['POST'])
+def update_order():
+    order = json.loads(request.data)
+    orderId = order['orderId']
+    order= Order.query.get(orderId)
+    if order:
+
+        order_mod = Order.query.filter_by(id=orderId).update({'status': "Sent"})
+        db.session.commit()
+
+
+    return jsonify({})
+
 
 create_database(app)
 

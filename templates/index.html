@@ -39,14 +39,13 @@
 	</div>
 </div>
 
-  <form method="POST" action="{{ url_for('index') }}">
-			<div class="panel-body">
-				<div class="row">
-					{{ form.csrf_token }}
-					<div class="col-lg-6">
-						<div class="form-group">
-							<label>Search:</label>
-							{{ form.Name(class='form-control') }}
+  <form method="POST" action="{{ url_for('index') }}" >
+			<div class="panel-body" >
+				<div class="row" >
+					<div class="col-lg-6" style="margin: auto; padding-top: 50px" >
+						<div class="form-group"  >
+							<input type="text"  class="form-control" id="item" name="item" placeholder="Search a product">
+        </div>
 						</div>
 
 					</div>

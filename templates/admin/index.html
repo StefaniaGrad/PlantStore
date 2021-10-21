@@ -45,6 +45,8 @@
 							<td>{{ order.first_name + ' ' + order.last_name }}</td>
 							<td>{{ order.order_total() / 100 }} lei</td>
 							<td><span class="badge">{{ order.status }}</span></td>
+                             <td><button type="button"  style="color:black" class="close" onClick="updateOrder({{ order.id }})">
+                                    <span aria-hidden="true">&#128666</span></td>
 						</tr>
 						{% endfor %}
 					</tbody>
