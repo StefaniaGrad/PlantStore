@@ -130,6 +130,9 @@ def handle_cart():
     grand_total_plus_shipping = grand_total + 1000
     return products, grand_total, grand_total_plus_shipping, quantity_total
 
+
+
+
 @app.route('/', methods=['GET', 'POST'])
 def index():
     products = Product.query.all()
