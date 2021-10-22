@@ -102,9 +102,9 @@ class Checkout(FlaskForm):
     email = StringField('Email')
     address = StringField('Address')
     city = StringField('City')
-    state = SelectField('State', choices=[('TM', 'Timis'), ('AR', 'Arad'), ('HD', 'Hunedoara'),('BH', 'Bihor'), ('CJ', 'Cluj')])
+    state = SelectField('State', choices=[('TM', 'Timiș'), ('AR', 'Arad'), ('HD', 'Hunedoara'),('BH', 'Bihor'), ('CJ', 'Cluj'), ('B', 'București')])
     country = SelectField('Country', choices=[( 'RO', 'Romania')])
-    payment_type = SelectField('Payment Type', choices=[('CK', 'Check'), ('WT', 'Wire Transfer')])
+    payment_type = SelectField('Payment Type', choices=[('LIV', 'Plata la livrare'), ('PP', 'PayPall')])
 
 class Search(FlaskForm):
     Name=StringField('Name_searched')
@@ -117,6 +117,8 @@ def handle_cart():
     index = 0
     quantity_total = 0
 
+    if 'cart' not in session:
+        session['cart'] = []
     for item in session['cart']:
         product = Product.query.filter_by(id=item['id']).first()
         quantity = int(item['quantity'])
@@ -128,20 +130,22 @@ def handle_cart():
     grand_total_plus_shipping = grand_total + 1000
     return products, grand_total, grand_total_plus_shipping, quantity_total
 
-
-
 @app.route('/', methods=['GET', 'POST'])
 def index():
     products = Product.query.all()
     if request.method == "POST":
-        item = request.form.get("item")
+        product_searched = request.form.get("item")
         l=[]
         for p in products:
-            if p.name == item:
+            product_searched = product_searched.lower()
+            product_in_list = p.name.lower()
+            result = product_in_list.find(product_searched)
+            if result != -1:
                 l.append(p)
         return render_template('index.html', products=l, user=current_user)
     else:
         return render_template('index.html', products=products, user=current_user)
+
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -273,7 +277,7 @@ def checkout():
             order = Order()
             form.populate_obj(order)
             order.reference = ''.join([random.choice('ABCDE') for _ in range(5)])
-            order.status = 'PENDING'
+            order.status = 'Pending'
             order.user_id = current_user.id
             order.email=current_user.email
 

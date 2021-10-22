@@ -21,7 +21,6 @@
 <
         <title>{% block title %}{% endblock %}</title>
 
-        <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="{{ url_for('static', filename='bs/css/flatly.min.css') }}" />
         <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
     </head>
@@ -29,7 +28,6 @@
         {% if admin %}
        <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style=" background-color: #c5442c">
             <div class="container-fluid">
-                <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
                         <span class="sr-only">Toggle navigation</span>
@@ -39,28 +37,25 @@
                     </button>
                     <a class="navbar-brand" href="{{ url_for('index') }}">Plant Store</a>
                 </div>
-
-                <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav">
                         <li class="active">
-                            <a href="{{ url_for('admin') }}"><i class="glyphicon glyphicon-dashboard"></i> Admin Dashboard</a>
+                            <a href="{{ url_for('admin') }}"><i class="glyphicon glyphicon-dashboard"></i> Admin </a>
                         </li>
                         <li>
-                            <a href="{{ url_for('add') }}"><i class="glyphicon glyphicon-plus-sign"></i> Add Product</a>
+                            <a href="{{ url_for('add') }}"><i class="glyphicon glyphicon-plus-sign"></i> Adaugă un produs</a>
                         </li>
                         <li>
-                            <a href="{{ url_for('index') }}"><i class="glyphicon glyphicon-chevron-left"></i> Back To Front</a>
+                            <a href="{{ url_for('index') }}"><i class="glyphicon glyphicon-chevron-left"></i> Înapoi la pagina principală</a>
                         </li>
                     </ul>
-                </div><!-- /.navbar-collapse -->
+                </div>
             </div>
         </nav>
         {% else %}
         <nav class="navbar navbar-default navbar-fixed-top" role="navigation"
              style="background-color:#053a2b">
             <div class="container-fluid" >
-                <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header" >
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
                         <span class="sr-only">Toggle navigation</span>
@@ -68,35 +63,32 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="{{ url_for('index') }} " style="color:#faf2f2">PlantStore</a>
+                    <a class="navbar-brand" href="{{ url_for('index') }} " style="color:#faf2f2">Plant Store</a>
                 </div>
 
-                <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse navbar-ex1-collapse" >
                     <nav class="navbar navbar-default" style="background-color:#053a2b; color:#a0c4b6">
                                 {% if user.is_authenticated %}
-                                <a class="nav-item nav-link" id="home" href="/" style="color:#faf2f2">Home</a>
-                                <a class="nav-item nav-link" id="logout" href="/logout" style="color:#faf2f2">Logout</a>
+                                <a class="nav-item nav-link" id="home" href="/" style="color:#faf2f2">Acasă</a>
+                                <a class="nav-item nav-link" id="logout" href="/logout" style="color:#faf2f2">Deconectare</a>
 
-                                    <a class="nav-item nav-link" id="user_orders" href="/user_orders" style="color:#e0cbcb">My Orders</a>
+                                    <a class="nav-item nav-link" id="user_orders" href="/user_orders" style="color:#e0cbcb">Comenzile mele</a>
 
                                 {% else %}
-                                <a class="nav-item nav-link" id="login" href="/login" style="color:#faf2f2">Login</a>
-                                 <a class="nav-item nav-link" id="signUp" href="/sign-up" style="color:#faf2f2">Sign Up</a>
+                                <a class="nav-item nav-link" id="login" href="/login" style="color:#faf2f2">Autentificare</a>
+                                 <a class="nav-item nav-link" id="signUp" href="/sign-up" style="color:#faf2f2">Creează-ți un cont</a>
 
                                  {% endif %}
                             <a href="{{ url_for('cart') }}" style="color:#e0cbcb">
-                                <i class="glyphicon glyphicon-shopping-cart" style="color:#faf2f2"></i> Cart
+                                <i class="glyphicon glyphicon-shopping-cart" style="color:#faf2f2"></i> Coș
                             </a>
                     </nav>
-                </div><!-- /.navbar-collapse -->
+                </div>
             </div>
         </nav>
         {% endif %}
-        {% with messages = get_flashed_messages(with_categories=true) %} {% if
-    messages %}
-        {% for category, message in messages %} {% if category ==
-    'error' %}
+        {% with messages = get_flashed_messages(with_categories=true) %} {% if messages %}
+        {% for category, message in messages %} {% if category == 'error' %}
     <div class="alert alert-danger alter-dismissable fade show" role="alert">
       {{ message }}
       <button type="button" class="close" data-dismiss="alert">
@@ -123,9 +115,7 @@
             </footer>
         </div>
 
-        <!-- jQuery -->
         <script src="{{ url_for('static', filename='bs/js/jquery.min.js') }}"></script>
-        <!-- Bootstrap JavaScript -->
         <script src="{{ url_for('static', filename='bs/js/bootstrap.min.js') }}"></script>
      <script
       src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

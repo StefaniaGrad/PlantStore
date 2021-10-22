@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 
-{% block title %}Cart | Plant Store{% endblock %}
+{% block title %}Coș | Plant Store{% endblock %}
 
 {% block body %}
 <div class="row" style="padding-top: 100px">
 	<div class="col-lg-8">
 		<h3 class="bold" style="color:#0b5634">
-			<i class="glyphicon glyphicon-shopping-cart" style="color:#0b5634"></i> Your Shopping Cart
+			<i class="glyphicon glyphicon-shopping-cart" style="color:#0b5634"></i> Coșul tău
 		</h3>
 
 		<div class="panel panel-primary">
@@ -32,7 +32,7 @@
 						</p>
 					</div>
 					<div class="col-lg-2">
-						<h3 style="color:#0b5634">Quantity</h3>
+						<h3 style="color:#0b5634">Cantitate</h3>
 						<p>
 							{{ product['quantity'] }}
 						</p>
@@ -51,20 +51,20 @@
 
 	<div class="col-lg-4">
 		<h3 class="bold" style="color:#053a2b">
-			<i class="glyphicon glyphicon-th-list" style="color:#053a2b"></i> Cart Summary
+			<i class="glyphicon glyphicon-th-list" style="color:#053a2b"></i> Sumar:
 		</h3>
 
 		<div class="panel panel-primary">
 			<div class="panel-body" style="color:#0b5634">
-				Current Cart Value
+				Valoarea curentă a coșului
 			</div>
 			<ul class="list-group">
 				<li class="list-group-item" style="color:#0b5634">
 					<p>
-						{{ quantity_total }} Items <strong class="pull-right">{{ grand_total / 100 }} lei</strong>
+						{{ quantity_total }} Produse <strong class="pull-right">{{ grand_total / 100 }} lei</strong>
 					</p>
 					<p >
-						24hr Shipping <strong class="pull-right">10 lei</strong>
+						Livrarea in 24h <strong class="pull-right">10 lei</strong>
 					</p>
 				</li>
 				<li class="list-group-item" style="color:#0b5634">
@@ -73,10 +73,10 @@
 			</ul>
 			<div class="panel-footer" style="color:#0b5634">
 				<a href="{{ url_for('checkout') }}" class="btn btn-primary btn-sm">
-					Checkout <i class="glyphicon glyphicon-chevron-right"></i>
+					Plasează comanda <i class="glyphicon glyphicon-chevron-right"></i>
 				</a>
 				<a href="{{ url_for('index') }}" class="btn btn-link btn-sm pull-right">
-					<i class="glyphicon glyphicon-chevron-left"></i> Continue Shopping
+					<i class="glyphicon glyphicon-chevron-left"></i> Continuă cumpărăturile
 				</a>
 			</div>
 		</div>

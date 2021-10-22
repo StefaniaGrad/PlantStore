@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Home |Plant Store{% endblock %}
+{% block title %}Acasă | Plant Store{% endblock %}
 
 {% block body %}
 <div class="row">
@@ -15,7 +15,7 @@
 					<img alt="First slide" src="{{ url_for('static', filename='imgs/indoor-plants1-1523287878.jpeg') }}" style="width: 100%;">
 					<div class="container">
 						<div class="carousel-caption">
-							<h1 style="color:#08281b; margin-bottom:135px">Amazing plants</h1>
+							<h1 style="color:#08281b; margin-bottom:135px">Plante uimitoare</h1>
 							<p>
 
 							</p>
@@ -26,7 +26,7 @@
 					<img alt="Second slide" src="{{ url_for('static', filename='imgs/360_F_263725047_cm5UneNI1mxGiA6Hufn9BysNH6JQv3KN.jpeg') }}" style="width: 100%;">
 					<div class="container">
 						<div class="carousel-caption">
-							<h1 style="color:#08231a; margin-left:350px">Home is where your plants are!</h1>
+							<h1 style="color:#08231a; margin-left:350px">Fă loc plantelor în casa ta. Te vei simți mai bine. </h1>
 							<p>
 							</p>
 						</div>
@@ -44,7 +44,7 @@
 				<div class="row" >
 					<div class="col-lg-6" style="margin: auto; padding-top: 50px" >
 						<div class="form-group"  >
-							<input type="text"  class="form-control" id="item" name="item" placeholder="Search a product">
+							<input type="text"  class="form-control text-center" id="item" name="item" placeholder="Caută" >
         </div>
 						</div>
 
@@ -57,7 +57,7 @@
 	<div class="col-lg-12">
 		<div class="panel panel-default">
 			<div class="panel-body">
-				<h4 class="text-center pageTitle">Available Products</h4>
+				<h4 class="text-center pageTitle">Produse disponibile</h4>
 			</div>
 		</div>
 	</div>
@@ -80,11 +80,11 @@
 					<hr />
 					<p>
 						<a href="{{ url_for('product', id=product.id) }}" class="btn btn-primary btn-sm">
-							<i class="glyphicon glyphicon-eye-open"></i> View
+							<i class="glyphicon glyphicon-eye-open"></i>
 						</a>
 						{% if product.stock > 0 %}
 						<a href="{{ url_for('quick_add', id=product.id) }}" class="btn btn-default btn-sm">
-							<i class="glyphicon glyphicon-shopping-cart"></i> Add To Cart
+							<i class="glyphicon glyphicon-shopping-cart"></i>
 						</a>
 						{% endif %}
 					</p>

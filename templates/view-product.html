@@ -4,18 +4,18 @@
 
 {% block body %}
 
-<div class="row">
+<div class="row"  style="color:#053a2b">
 	<div class="col-lg-12">
 		<ol class="breadcrumb">
 			<li>
-				<a href="{{ url_for('index') }}">Home</a>
+				<a href="{{ url_for('index') }}">Acasă</a>
 			</li>
-			<li class="active">View Product</li>
+			<li class="active">Vizualizează produsul</li>
 		</ol>
 	</div>
 </div>
 
-<div class="row pad">
+<div class="row pad"  style="color:#053a2b">
 	<div class="col-lg-5">
 		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 			<div class="thumbnail">
@@ -24,17 +24,17 @@
 		</div>
 	</div>
 
-	<div class="col-lg-7">
-		<div class="panel panel-primary">
-			<div class="panel-heading">
-				<h3 class="panel-title">Product Details</h3>
+	<div class="col-lg-7" style="color:#053a2b">
+		<div class="panel panel-primary" style="color:#053a2b">
+			<div class="panel-heading" >
+				<h3 class="panel-title">Detaliile produsului</h3>
 			</div>
-			<div class="panel-body">
+			<div class="panel-body"  style="color:#053a2b">
 				<h3>{{ product.name }} &nbsp; 
 					{% if product.stock > 0 %}
-					<small>(In Stock)</small>
+					<small>(În stoc)</small>
 					{% else %}
-					<small>(Out of Stock)</small>
+					<small>(Nu se află în stoc momentan)</small>
 					{% endif %}
 				</h3> 
 				<h4>{{ product.price / 100 }} lei</h4>
@@ -48,7 +48,7 @@
 					<div class="col-lg-4">
 						<div class="row">
 							<div class="col-lg-12">
-								Quantity
+								Cantitate
 							</div>
 							<div class="col-lg-12">
 								{{ form.csrf_token }}
@@ -65,7 +65,7 @@
 			<div class="panel-footer">
 				{% if product.stock > 0 %}
 				<button type="submit" class="btn btn-primary">
-					<i class="glyphicon glyphicon-shopping-cart"></i> Add To Cart
+					<i class="glyphicon glyphicon-shopping-cart"></i> Adaugă în coș
 				</button>
 				{% endif %}
 			</div>
@@ -76,22 +76,21 @@
 			<!-- Nav tabs -->
 			<ul class="nav nav-tabs" role="tablist">
 				<li role="presentation" class="active">
-					<a href="#description" aria-controls="description" role="tab" data-toggle="tab">Product Description</a>
+					<a href="#description" aria-controls="description" role="tab" data-toggle="tab">Descrierea Produsului</a>
 				</li>
 				<li role="presentation">
-					<a href="#shipping" aria-controls="shipping" role="tab" data-toggle="tab">Shipping Details</a>
+					<a href="#shipping" aria-controls="shipping" role="tab" data-toggle="tab">Detalii de livrare</a>
 				</li>
 			</ul>
-		
-			<!-- Tab panes -->
+
 			<div class="tab-content">
 				<div role="tabpanel" class="tab-pane active" id="description">
-					<h3>Product Description</h3>
+					<h3>Descrierea produului</h3>
 					{{ product.description }}
 				</div>
 				<div role="tabpanel" class="tab-pane" id="shipping">
-					<h3>Shipping Details</h3>
-					10 lei Flat Rate
+					<h3>Detalii de livrare</h3>
+					10 lei
 				</div>
 			</div>
 		</div>
